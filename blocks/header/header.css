@@ -1,0 +1,6 @@
+.header {
+  max-width: calc(100% - 200px * 2);
+  min-height: 119px;
+  padding-top: 45px;
+  margin: 0 auto;
+}

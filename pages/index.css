@@ -1,0 +1,131 @@
+@import url(../vendor/normalize.css);
+@import url(../vendor/fonts/fonts.css);
+@import url(../blocks/page/page.css);
+@import url(../blocks/container/container.css);
+
+/* HEADER */
+@import url(../blocks/header/header.css);
+@import url(../blocks/logo/logo.css);
+
+.content {
+}
+
+/* PROFILE */
+.profile {
+  width: calc(100% - 200px * 2);
+  box-sizing: border-box;
+  padding: 40px 0 51px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.profile__info {
+  width: 336px;
+}
+
+.profile__title-block {
+  display: inline-block;
+  padding-bottom: 16px;
+}
+.profile__title {
+  color: #fff;
+  font-size: 42px;
+  line-height: 1.14;
+  font-weight: 500;
+  margin: 0;
+  display: inline;
+}
+
+.profile__subtitle {
+  color: #fff;
+  margin: 0;
+}
+
+.profile__button_edit {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  margin-left: 18px;
+  color: #fff;
+  border: 1px solid #fff;
+}
+
+.profile__button_add {
+  width: 150px;
+  height: 50px;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  background: transparent;
+  background-image: url(../images/plus.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* ELEMENTS */
+.elements {
+  width: calc(100% - 200px * 2);
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  column-gap: 17px;
+  row-gap: 20px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card__item {
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.card__image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__name {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 30px 31px 21px;
+}
+
+.card__title {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+  margin: 0;
+}
+
+/* FOOTER */
+.footer {
+  max-width: calc(100% - 200px * 2);
+  padding: 67px 0 60px;
+  margin: 0 auto;
+}
+.footer__title {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  /* margin: 0 auto;*/
+}
