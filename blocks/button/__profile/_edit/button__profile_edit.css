@@ -1,11 +1,3 @@
-/* .button__profile_edit {
-  width: 24px;
-  height: 24px;
-  margin-left: 18px;
-  color: #fff;
-  border: 1px solid #fff;
-} */
-
 .button__profile_edit {
   width: 24px;
   height: 24px;
@@ -14,5 +6,22 @@
   border: 1px solid #fff;
   position: absolute;
   right: 0;
-  top: 34px;
+  top: 15px;
+}
+
+@media screen and (max-width: 600px) {
+  .button__profile_edit {
+    top: 10px;
+    right: 30px;
+    width: 18px;
+    height: 18px;
+    margin-left: 8px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .button__profile_edit {
+    top: 8px;
+    right: 20px;
+  }
 }

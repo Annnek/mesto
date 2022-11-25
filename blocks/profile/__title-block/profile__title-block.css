@@ -1,7 +1,14 @@
 .profile__title-block {
+  margin: 0;
   width: 336px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  .profile__title-block {
+    width: 282px;
+    align-items: center;
+  }
 }
