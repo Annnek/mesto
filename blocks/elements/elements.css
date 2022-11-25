@@ -1,0 +1,6 @@
+.elements {
+  max-width: calc(100% - 200px * 2);
+  /* max-width: 880px;
+  padding: 0 200px;  */
+  margin: 0 auto;
+}
