@@ -17,14 +17,24 @@
           <div class="profile__info">
             <img class="profile__image" src="./images/kusto.jpg" alt="Фотография Кусто" />
             <div class="profile__title-block">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <button class="button button__profile_edit">&#128393;</button>
-              <h2 class="profile__subtitle">Исследователь океана</h2>
+              <h1 class="profile__title overflow">Жак-Ив Кусто</h1>
+              <button class="button button__profile_edit popup_opened">&#128393;</button>
+              <h2 class="profile__subtitle overflow">Исследователь океана</h2>
             </div>
           </div>
           <button class="button button__profile_add"></button>
           <div class="popup">
-            <form action=""></form>
+            <div class="popup__container">
+              <form class="popup__form" action="">
+                <h2 class="form__title">Редактировать профиль</h2>
+                <fieldset class="popup__fields">
+                  <input class="popup__fields_type popup__fields_type_name" type="text" name="" id="" value="Жак-Ив Кусто" />
+                  <input class="popup__fields_type popup__fields_type_profession" type="text" name="" id="" value="Исследователь океана" />
+                </fieldset>
+                <button class="popup__save" type="submit">Сохранить</button>
+              </form>
+              <button class="popup_closed"></button>
+            </div>
           </div>
         </section>
         <section class="elements">
@@ -32,42 +42,42 @@
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
-                <h2 class="card__title">Карачаевск</h2>
+                <h2 class="card__title overflow">Карачаевск</h2>
                 <img src="./images/heart.svg" alt="Like" />
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
-                <h2 class="card__title">Гора Эльбрус</h2>
+                <h2 class="card__title overflow">Гора Эльбрус</h2>
                 <img class="card__pic-heart" src="./images/heart.svg" alt="Like" />
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
-                <h2 class="card__title">Домбай</h2>
+                <h2 class="card__title overflow">Домбай</h2>
                 <img src="./images/heart.svg" alt="Like" />
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1404681-unsplash-1.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
-                <h2 class="card__title">Гора Эльбрус</h2>
+                <h2 class="card__title overflow">Гора Эльбрус</h2>
                 <img src="./images/heart.svg" alt="Like" />
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1556355-unsplash-1.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
-                <h2 class="card__title">Домбай</h2>
+                <h2 class="card__title overflow">Домбай</h2>
                 <img src="./images/heart.svg" alt="Like" />
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1088404-unsplash-1.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
-                <h2 class="card__title">Карачаево-Ч...</h2>
+                <h2 class="card__title overflow">Карачаево-Черкессия</h2>
                 <img src="./images/heart.svg" alt="Like" />
               </div>
             </li>
@@ -78,5 +88,6 @@
         <h2 class="footer__title">© 2022 Mesto Russia</h2>
       </footer>
     </div>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
