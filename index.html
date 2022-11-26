@@ -18,22 +18,22 @@
             <img class="profile__image" src="./images/kusto.jpg" alt="Фотография Кусто" />
             <div class="profile__title-block">
               <h1 class="profile__title overflow">Жак-Ив Кусто</h1>
-              <button class="button button__profile_edit popup_opened">&#128393;</button>
+              <button class="button_edit" type="button">&#128393;</button>
               <h2 class="profile__subtitle overflow">Исследователь океана</h2>
             </div>
           </div>
-          <button class="button button__profile_add"></button>
+          <button class="button_add" type="button"></button>
           <div class="popup">
             <div class="popup__container">
-              <form class="popup__form" action="">
+              <form class="popup__form">
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="popup__fields">
-                  <input class="popup__fields_type popup__fields_type_name" type="text" name="" id="" value="Жак-Ив Кусто" />
-                  <input class="popup__fields_type popup__fields_type_profession" type="text" name="" id="" value="Исследователь океана" />
+                  <input class="popup__field popup__field_type_name" type="text" name="inputName" id="inputName" placeholder="Имя" />
+                  <input class="popup__field popup__field_type_job" type="text" name="inputJob" id="inputJob" placeholder="О себe" />
                 </fieldset>
                 <button class="popup__save" type="submit">Сохранить</button>
               </form>
-              <button class="popup_closed"></button>
+              <button class="popup_closed" type="button"></button>
             </div>
           </div>
         </section>
