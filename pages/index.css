@@ -31,100 +31,12 @@
 @import url(../blocks/footer/__title/footer__title.css);
 
 /* POPUP */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-}
-.popup_opened {
-  display: block;
-}
-
-.popup__container {
-  margin: 0 auto;
-  width: 100%;
-  height: 370px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  display: flex;
-  justify-content: center;
-  z-index: 1;
-}
-
-.popup_closed {
-  padding: 0;
-  margin-left: 8px;
-  background: transparent;
-  background-image: url("../images/close-icon.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 32px;
-  height: 32px;
-  top: 0;
-  cursor: pointer;
-}
-
-.popup__form {
-  width: 430px;
-  height: 330px;
-  padding: 0 36px;
-  box-sizing: border-box;
-  background-color: #fff;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  align-self: flex-end;
-}
-
-.form__title {
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29px;
-  color: #000;
-  margin: 0;
-  padding-top: 34px;
-}
-
-.popup__fields {
-  margin: 0 auto;
-  width: 358px;
-  padding: 24px 0 48px;
-  border: none;
-  outline: none;
-}
-
-.popup__field {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 17px;
-  color: #000;
-  padding-top: 30px;
-  padding-bottom: 13px;
-  border: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.popup__save {
-  margin: 0 auto;
-  padding: 0;
-  width: 358px;
-  height: 50px;
-  background: #000;
-  border-radius: 2px;
-  color: #fff;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  text-align: center;
-  border: none;
-  cursor: pointer;
-}
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/_closed/popup_closed.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup/__title/popup__title.css);
+@import url(../blocks/popup/__fields/popup__fields.css);
+@import url(../blocks/popup/__field/popup__field.css);
+@import url(../blocks/popup/__save/popup__save.css);

@@ -1,0 +1,12 @@
+.popup_closed {
+  padding: 0;
+  margin-left: 8px;
+  background: transparent;
+  background-image: url("../images/close-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 32px;
+  height: 32px;
+  top: 0;
+  cursor: pointer;
+}
