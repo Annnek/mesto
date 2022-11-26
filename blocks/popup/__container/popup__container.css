@@ -10,3 +10,10 @@
   justify-content: center;
   z-index: 1;
 }
+
+@media screen and (max-width: 525px) {
+  .popup__container {
+    width: 290px;
+    flex-direction: column-reverse;
+  }
+}

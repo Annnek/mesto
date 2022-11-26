@@ -8,3 +8,12 @@
   border-radius: 10px;
   align-self: flex-end;
 }
+
+@media screen and (max-width: 525px) {
+  .popup__form {
+    width: 282px;
+    height: 322px;
+    padding: 0 19px;
+    align-self: center;
+  }
+}
