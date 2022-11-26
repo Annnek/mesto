@@ -8,14 +8,14 @@ const closeEditButton = document.querySelector(".popup_closed"); //закрыт�
 const saveEditButton = document.querySelector(".popup__form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
 
 let title = document.querySelector(".profile__title");
-let subTitle = document.querySelector(".profile__subtitle");
+let subtitle = document.querySelector(".profile__subtitle");
 
 //функция открыть попап
-function editForm() {
-  // event.preventDefault(); // Отменяет дефолтное поведение браузера
+function editForm(event) {
+  event.preventDefault(); // Отменяет дефолтное поведение браузера
   popupBg.classList.add("popup_opened");
-  inputName.value = title.textContent;
-  inputJob.value = subTitle.textContent;
+  inputName.value = title.textContent; //строке ввода имени присваиваем значение Title
+  inputJob.value = subtitle.textContent; // строке ввода профессии присваиваем значение subtitle
 }
 
 function closeEdit() {
@@ -24,8 +24,9 @@ function closeEdit() {
 
 function saveForm(event) {
   event.preventDefault();
+  // Берем значения полей ввода jobInput и nameInput из свойства value и вставляем в элементы title и subtitle с помощью textContent
   title.textContent = inputName.value;
-  subTitle.textContent = inputJob.value;
+  subtitle.textContent = inputJob.value;
 
   closeEdit();
 }
