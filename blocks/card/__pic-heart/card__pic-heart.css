@@ -1,0 +1,13 @@
+.card__pic-heart {
+  width: 22px;
+  height: 19px;
+  object-fit: cover;
+  object-position: center;
+  opacity: 1;
+  transition: opacity 0.2s linear;
+  background-color: black;
+}
+
+.card__pic-heart:hover {
+  opacity: 0.5;
+}
