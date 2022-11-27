@@ -2,14 +2,13 @@
   width: 24px;
   height: 24px;
   margin-left: 18px;
+  padding: 0;
+  background: transparent;
   color: #fff;
   border: 1px solid #fff;
   position: absolute;
   right: 0;
   top: 15px;
-  background: transparent;
-  padding: 0;
-  color: #fff;
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.2s linear;
