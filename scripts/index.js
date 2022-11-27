@@ -1,4 +1,4 @@
-const openEditButton = document.querySelector(".button__type_edit"); // кнопка Редактировать профиль - открыть попап
+const openEditButton = document.querySelector(".profile__button-edit"); // кнопка Редактировать профиль - открыть попап
 
 let popupBg = document.querySelector(".popup"); //подключаем бекграунд
 let popup = document.querySelector(".popup__form"); //подключаем саму форму
