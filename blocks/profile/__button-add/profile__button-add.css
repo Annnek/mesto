@@ -4,7 +4,11 @@
   background: transparent;
   border: 2px solid #fff;
   border-radius: 2px;
+<<<<<<< HEAD:blocks/profile/__button-add/profile__button-add.css
   background-image: url(../../../../images/plus.png);
+=======
+  background-image: url(../../../images/plus.svg);
+>>>>>>> develop:blocks/button/_add/button_add.css
   background-position: center;
   background-repeat: no-repeat;
   padding: 0;
