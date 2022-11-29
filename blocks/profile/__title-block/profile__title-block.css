@@ -1,23 +1,24 @@
 .profile__title-block {
   margin: 0;
   width: 337px;
-  /* display: flex;
+  display: flex;
   flex-direction: column;
-  position: relative; */
-  display: grid;
+  position: relative;
+  /* display: grid;
   grid-template-columns: 1fr 24px;
-  grid-template-rows: repeat(2, fit-content);
+  grid-template-rows: repeat(2, min-content);
   grid-template-areas:
     "title button"
     "subtitle subtitle";
-  align-items: flex-end;
-  row-gap: 16px;
+  align-items: baseline;
+  row-gap: 16px; */
 }
 
 @media screen and (max-width: 600px) {
   .profile__title-block {
     width: 282px;
-    justify-content: center;
-    row-gap: 14px;
+    align-items: center;
+    /* justify-content: center; */
+    /* row-gap: 14px; */
   }
 }
