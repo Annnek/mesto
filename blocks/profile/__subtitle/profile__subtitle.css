@@ -4,8 +4,7 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: 400;
-  padding-top: 16px;
-  /* grid-area: subtitle; */
+  grid-area: subtitle;
 }
 
 @media screen and (max-width: 600px) {
@@ -13,7 +12,6 @@
     max-width: 282px;
     font-size: 14px;
     line-height: 17px;
-    padding-top: 13px;
     /* justify-self: center; */
   }
 }
