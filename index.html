@@ -18,24 +18,11 @@
             <img class="profile__image" src="./images/kusto.jpg" alt="Фотография Кусто" />
             <div class="profile__title-block">
               <h1 class="profile__title overflow">Жак-Ив Кусто</h1>
-              <button class="button_edit" type="button">&#128393;</button>
+              <button class="button_edit" type="button"></button>
               <h2 class="profile__subtitle overflow">Исследователь океана</h2>
             </div>
           </div>
           <button class="button_add" type="button"></button>
-          <div class="popup">
-            <div class="popup__container">
-              <form class="popup__form">
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <fieldset class="popup__fields">
-                  <input class="popup__field popup__field_type_name" type="text" name="inputName" id="inputName" placeholder="Имя" />
-                  <input class="popup__field popup__field_type_job" type="text" name="inputJob" id="inputJob" placeholder="О себe" />
-                </fieldset>
-                <button class="popup__save" type="submit">Сохранить</button>
-              </form>
-              <button class="popup_closed" type="button"></button>
-            </div>
-          </div>
         </section>
         <section class="elements">
           <ul class="card">
@@ -43,47 +30,60 @@
               <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
                 <h2 class="card__title overflow">Карачаево-Черкессия</h2>
-                <img src="./images/heart.svg" alt="Like" />
+                <button class="card__pic-heart"></button>
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус" />
               <div class="card__name">
                 <h2 class="card__title overflow">Гора Эльбрус</h2>
-                <img class="card__pic-heart" src="./images/heart.svg" alt="Like" />
+                <button class="card__pic-heart"></button>
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай" />
               <div class="card__name">
                 <h2 class="card__title overflow">Домбай</h2>
-                <img src="./images/heart.svg" alt="Like" />
+                <button class="card__pic-heart"></button>
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/anna-frizen-murmansk.jpg" alt="Фото Мурманска" />
               <div class="card__name">
                 <h2 class="card__title overflow">Мурманск</h2>
-                <img src="./images/heart.svg" alt="Like" />
+                <button class="card__pic-heart"></button>
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/ekaterina-sazonova-baikal.jpg" alt="Озеро Байкал" />
               <div class="card__name">
                 <h2 class="card__title overflow">Байкал</h2>
-                <img src="./images/heart.svg" alt="Like" />
+                <button class="card__pic-heart"></button>
               </div>
             </li>
             <li class="card__item">
               <img class="card__image" src="./images/daniil-silantev-kamchatka.jpg" alt="Камчатка" />
               <div class="card__name">
                 <h2 class="card__title overflow">Камчатка</h2>
-                <img src="./images/heart.svg" alt="Like" />
+                <button class="card__pic-heart"></button>
               </div>
             </li>
           </ul>
         </section>
       </main>
+      <div class="popup">
+        <div class="popup__container">
+          <form class="popup__form" name="editForm">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <fieldset class="popup__fields">
+              <input class="popup__field popup__field_type_name" type="text" name="input-name" id="inputName" placeholder="Имя" />
+              <input class="popup__field popup__field_type_job" type="text" name="input-job" id="inputJob" placeholder="О себe" />
+            </fieldset>
+            <button class="popup__save" type="submit">Сохранить</button>
+          </form>
+          <button class="popup_closed" type="button"></button>
+        </div>
+      </div>
       <footer class="footer">
         <h2 class="footer__title">© 2022 Mesto Russia</h2>
       </footer>

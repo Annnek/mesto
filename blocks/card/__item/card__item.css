@@ -1,6 +1,5 @@
 .card__item {
-  width: 282px;
-  height: 361px;
+  width: 282px; /*высоту лучше не задавать, она будет зависеть от количества контента внутри контейнера.*/
   border-radius: 10px;
   background-color: #fff;
 }
