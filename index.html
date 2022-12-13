@@ -26,7 +26,7 @@
         </section>
         <section class="elements">
           <ul class="card">
-            <li class="card__item">
+            <!-- <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
                 <h2 class="card__title overflow">Карачаево-Черкессия</h2>
@@ -67,23 +67,69 @@
                 <h2 class="card__title overflow">Камчатка</h2>
                 <button class="card__pic-heart" type="button"></button>
               </div>
-            </li>
+            </li> -->
           </ul>
         </section>
       </main>
-      <div class="popup">
+
+      <!-- EDIT POPUP -->
+      <div class="popup popup__edit">
         <div class="popup__container">
-          <form class="popup__form" name="edit-form">
+          <form class="popup__form popup__edit-form" name="edit-form">
             <h2 class="popup__title">Редактировать профиль</h2>
             <fieldset class="popup__fields">
               <input class="popup__field popup__field_type_name" type="text" name="input-name" id="inputName" placeholder="Имя" />
-              <input class="popup__field popup__field_type_job" type="text" name="input-job" id="inputJob" placeholder="О себe" />
+              <input class="popup__field popup__field_type_job" type="text" name="input-job" id="inputJob" placeholder="О себе" />
             </fieldset>
             <button class="popup__save" type="submit">Сохранить</button>
           </form>
-          <button class="popup__closed" type="button"></button>
+          <button class="popup__closed popup__edit_button_close" type="button"></button>
         </div>
       </div>
+
+      <!-- ADD POPUP -->
+      <div class="popup popup__add">
+        <div class="popup__container">
+          <form class="popup__form popup__add-form" name="add-form">
+            <h2 class="popup__title">Новое место</h2>
+            <fieldset class="popup__fields">
+              <input class="popup__field popup__field_type_place" type="text" name="input-place" id="inputPlace" placeholder="Название" />
+              <input class="popup__field popup__field_type_place-link" type="url" name="input-place-link" id="inputPlaceLink" placeholder="Ссылка на картинку" />
+            </fieldset>
+            <button class="popup__save" type="submit">Сохранить</button>
+          </form>
+          <button class="popup__closed popup__add_button_close" type="button"></button>
+        </div>
+      </div>
+
+      <!-- PREVIEW IMAGE POPUP -->
+      <div class="popup popup__preview">
+        <div class="popup__container">
+          <form class="popup__form popup__add-form" name="add-form">
+            <h2 class="popup__title">Новое место</h2>
+            <fieldset class="popup__fields">
+              <input class="popup__field popup__field_type_place" type="text" name="input-place" id="inputPlace" placeholder="Название" />
+              <input class="popup__field popup__field_type_place-link" type="url" name="input-place-link" id="inputPlaceLink" placeholder="Ссылка на картинку" />
+            </fieldset>
+            <button class="popup__save" type="submit">Сохранить</button>
+          </form>
+          <button class="popup__closed popup__add_button_close" type="button"></button>
+        </div>
+      </div>
+
+      <!-- TEMPLATE CARD -->
+      <template id="card-template">
+        <li class="card__item">
+          <button class="card__trash"></button>
+          <img class="card__image" src="" alt="" />
+          <div class="card__name">
+            <h2 class="card__title overflow"></h2>
+            <button class="card__pic-heart" type="button"></button>
+          </div>
+        </li>
+      </template>
+
+      <!-- FOOTER -->
       <footer class="footer">
         <h2 class="footer__title">© 2022 Mesto Russia</h2>
       </footer>
