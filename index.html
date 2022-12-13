@@ -103,17 +103,13 @@
       </div>
 
       <!-- PREVIEW IMAGE POPUP -->
-      <div class="popup popup__preview">
-        <div class="popup__container">
-          <form class="popup__form popup__add-form" name="add-form">
-            <h2 class="popup__title">Новое место</h2>
-            <fieldset class="popup__fields">
-              <input class="popup__field popup__field_type_place" type="text" name="input-place" id="inputPlace" placeholder="Название" />
-              <input class="popup__field popup__field_type_place-link" type="url" name="input-place-link" id="inputPlaceLink" placeholder="Ссылка на картинку" />
-            </fieldset>
-            <button class="popup__save" type="submit">Сохранить</button>
-          </form>
-          <button class="popup__closed popup__add_button_close" type="button"></button>
+      <div class="popup popup-preview">
+        <div class="popup-preview__container">
+          <button class="popup-preview__button-close" type="button"></button>
+          <figure class="popup-preview__block-image">
+            <img class="popup-preview__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg" alt="" />
+            <figcaption class="popup-preview__title">Место</figcaption>
+          </figure>
         </div>
       </div>
 

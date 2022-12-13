@@ -96,8 +96,13 @@ const createCard = (imagePlace, titlePlace) => {
   place.querySelector(".card__image").src = imagePlace;
   place.querySelector(".card__image").alt = titlePlace;
   place.querySelector(".card__title").textContent = titlePlace;
+  //удалить место
   place.querySelector(".card__trash").addEventListener("click", () => {
-    place.remove(); //удалить место
+    place.remove();
+  });
+  // поставить лайк
+  place.querySelector(".card__pic-heart").addEventListener("click", function (event) {
+    event.target.classList.toggle("card__pic-heart_active");
   });
 
   return place;
@@ -124,3 +129,5 @@ const addPlace = (event) => {
 };
 
 saveAddButton.addEventListener("submit", addPlace);
+
+// Превью фото мест
