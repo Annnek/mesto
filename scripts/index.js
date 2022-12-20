@@ -7,7 +7,7 @@ let subtitle = document.querySelector(".profile__subtitle");
 
 // переменные кнопок открыть-закрыть попап
 const openEditButton = document.querySelector(".profile__button-edit"); // кнопка Редактировать профиль - открыть попап
-const closeEditButton = document.querySelector(".popup_button_edit-close"); //закрыть попап
+const closeEditButton = document.querySelector(".popup__close-edit"); //закрыть попап
 const saveEditButton = document.querySelector(".popup__edit-form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
 
 // функция открыть-закрыть попап
@@ -42,7 +42,7 @@ saveEditButton.addEventListener("submit", saveEditForm);
 
 // переменные формы добавления карточек
 const openAddButton = document.querySelector(".profile__button-add"); // кнопка Добавить картинку - открыть попап
-const closeAddButton = document.querySelector(".popup_button_add-close"); //закрыть попап
+const closeAddButton = document.querySelector(".popup__close-add"); //закрыть попап
 const saveAddButton = document.querySelector(".popup__add-form");
 let popupAddBg = document.querySelector(".popup_add"); //подключаем бекграунд
 let inputPlace = popupAddBg.querySelector(".popup__field_type_place"); // выбор поля ввода названия места
