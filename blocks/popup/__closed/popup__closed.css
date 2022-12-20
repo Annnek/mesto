@@ -16,6 +16,7 @@
   .popup__closed {
     width: 20px;
     height: 20px;
-    margin: auto 19px 16px auto;
+    align-self: flex-end;
+    margin-bottom: 16px;
   }
 }

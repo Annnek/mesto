@@ -1,4 +1,5 @@
 .popup_opened {
   /* display: block; вариант при абсолютном позиционировании формы попап */
-  display: flex;
+  visibility: visible;
+  opacity: 1;
 }

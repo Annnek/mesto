@@ -46,7 +46,6 @@
 /* POPUP PREVIEW */
 @import url(../blocks/popup-preview/popup-preview.css);
 @import url(../blocks/popup-preview/__container/popup-preview__container.css);
-@import url(../blocks/popup-preview/__block-image/popup-preview__block-image.css);
 @import url(../blocks/popup-preview/__image/popup-preview__image.css);
 @import url(../blocks/popup-preview/__title/popup-preview__title.css);
 @import url(../blocks/popup-preview/__button-close/popup-preview__button-close.css);
