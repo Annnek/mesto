@@ -9,7 +9,6 @@
   background-image: url(../../../images/icon-trash.svg);
   background-repeat: no-repeat;
   cursor: pointer;
-  z-index: 1;
   opacity: 1;
   transition: opacity 0.2s linear;
 }

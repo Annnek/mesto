@@ -1,5 +1,9 @@
 .popup-preview__container {
   margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 75vw;
+  height: 75vh;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }

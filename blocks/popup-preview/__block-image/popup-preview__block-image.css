@@ -1,5 +1,5 @@
 .popup-preview__block-image {
   margin: 0;
-  max-width: 75vw;
-  max-height: 75vh;
+  width: 100%;
+  height: calc(100% - 40px);
 }
