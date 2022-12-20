@@ -1,5 +1,5 @@
 //переменные формы редактирования
-let popupEditBg = document.querySelector(".popup__edit"); //подключаем бекграунд
+let popupEditBg = document.querySelector(".popup_edit"); //подключаем бекграунд
 let inputName = popupEditBg.querySelector(".popup__field_type_name"); // находим поле ввода Имя
 let inputJob = popupEditBg.querySelector(".popup__field_type_job"); //находим поле ввода О себе
 let title = document.querySelector(".profile__title");
@@ -7,7 +7,7 @@ let subtitle = document.querySelector(".profile__subtitle");
 
 // переменные кнопок открыть-закрыть попап
 const openEditButton = document.querySelector(".profile__button-edit"); // кнопка Редактировать профиль - открыть попап
-const closeEditButton = document.querySelector(".popup__edit_button_close"); //закрыть попап
+const closeEditButton = document.querySelector(".popup_edit_button-close"); //закрыть попап
 const saveEditButton = document.querySelector(".popup__edit-form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
 
 // функция открыть-закрыть попап
@@ -42,9 +42,9 @@ saveEditButton.addEventListener("submit", saveEditForm);
 
 // переменные формы добавления карточек
 const openAddButton = document.querySelector(".profile__button-add"); // кнопка Добавить картинку - открыть попап
-const closeAddButton = document.querySelector(".popup__add_button_close"); //закрыть попап
+const closeAddButton = document.querySelector(".popup_add_button-close"); //закрыть попап
 const saveAddButton = document.querySelector(".popup__add-form");
-let popupAddBg = document.querySelector(".popup__add"); //подключаем бекграунд
+let popupAddBg = document.querySelector(".popup_add"); //подключаем бекграунд
 let inputPlace = popupAddBg.querySelector(".popup__field_type_place"); // выбор поля ввода названия места
 let inputPlaceLink = popupAddBg.querySelector(".popup__field_type_place-link"); // выбор поля добавления ссылки
 
