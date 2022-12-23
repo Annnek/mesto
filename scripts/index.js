@@ -21,8 +21,8 @@ const inputPlaceLink = popupAddPlace.querySelector(".popup__field_type_place-lin
 // переменные контейнера - список мест
 const cardsContainer = document.querySelector(".elements");
 const cardElement = cardsContainer.querySelector(".card");
-const cardTemplate = document.querySelector("#card-template"); // мой template
-const cardItem = cardTemplate.content.querySelector(".card__item");
+const cardAllTemplate = document.querySelector("#card-template"); // мой template
+const cardTemplate = cardAllTemplate.content.querySelector(".card__item");
 
 // Переменные попап открытия полноэкранной картинки
 const popupPreview = document.querySelector(".popup-preview");
@@ -56,7 +56,7 @@ function handleSaveEditForm(event) {
 
 // Функции создания из массива, удаления, лайка карточек
 const createCard = (imagePlace, titlePlace) => {
-  const place = cardItem.cloneNode(true);
+  const place = cardTemplate.cloneNode(true);
   const cardTemplateImage = place.querySelector(".card__image");
   const cardTemplateTitle = place.querySelector(".card__title");
   const buttonTrash = place.querySelector(".card__trash");
