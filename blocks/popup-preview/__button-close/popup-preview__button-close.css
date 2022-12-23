@@ -5,7 +5,6 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  align-self: end;
   background: transparent;
   background-image: url("../../../images/close-icon.svg");
   background-repeat: no-repeat;
