@@ -146,3 +146,22 @@ buttonSavePlacePopup.addEventListener("submit", handleAddPlace);
 buttonClosePreviewPopup.addEventListener("click", () => {
   closePopup(popupPreview);
 });
+
+//закрыть попапы кликом по оверлею
+popupEditProfile.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupEditProfile);
+  }
+});
+
+popupAddPlace.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupAddPlace);
+  }
+});
+
+popupPreview.addEventListener("click", (evt) => {
+  if (evt.currentTarget === evt.target) {
+    closePopup(popupPreview);
+  }
+});
