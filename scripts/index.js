@@ -40,13 +40,22 @@ const previewImage = popupPreview.querySelector(".popup-preview__image");
 const titlePreviewImage = popupPreview.querySelector(".popup-preview__title");
 const buttonClosePreviewPopup = popupPreview.querySelector(".popup-preview__button-close");
 
-// функция открыть-закрыть попап
+// функции открыть-закрыть попап
 function openPopup(popup) {
+  document.addEventListener("keydown", handleEscDown); //чтобы отслеживать нажатие Esc только когда открыт попап
   popup.classList.add("popup_opened");
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.addEventListener("keydown", handleEscDown);
+}
+
+function handleEscDown(evt) {
+  if (evt.code == "Escape") {
+    const popup = document.querySelector(".popup_opened");
+    closePopup(popup);
+  }
 }
 
 // функции попап редактирования
