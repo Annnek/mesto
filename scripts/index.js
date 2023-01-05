@@ -1,7 +1,17 @@
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_disabled",
+  activeButtonClass: "popup__save_valid",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
 //переменные формы редактирования
 const popupEditProfile = document.querySelector(".popup_edit"); //подключаем бекграунд
-const inputName = popupEditProfile.querySelector(".popup__field_type_name"); // находим поле ввода Имя
-const inputJob = popupEditProfile.querySelector(".popup__field_type_job"); //находим поле ввода О себе
+const inputName = popupEditProfile.querySelector(".popup__input_type_name"); // находим поле ввода Имя
+const inputJob = popupEditProfile.querySelector(".popup__input_type_job"); //находим поле ввода О себе
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__subtitle");
 
@@ -15,8 +25,8 @@ const buttonAddPlacePopup = document.querySelector(".profile__button-add"); // �
 const buttonClosePlacePopup = document.querySelector(".popup__close-add"); //закрыть попап
 const buttonSavePlacePopup = document.querySelector(".popup__add-form");
 const popupAddPlace = document.querySelector(".popup_add"); //подключаем бекграунд
-const inputPlace = popupAddPlace.querySelector(".popup__field_type_place"); // выбор поля ввода названия места
-const inputPlaceLink = popupAddPlace.querySelector(".popup__field_type_place-link"); // выбор поля добавления ссылки
+const inputPlace = popupAddPlace.querySelector(".popup__input_type_place"); // выбор поля ввода названия места
+const inputPlaceLink = popupAddPlace.querySelector(".popup__input_type_place-link"); // выбор поля добавления ссылки
 
 // переменные контейнера - список мест
 const cardsContainer = document.querySelector(".elements");
@@ -104,6 +114,9 @@ const handleAddPlace = (event) => {
   buttonSavePlacePopup.reset();
   closePopup(popupAddPlace);
 };
+
+//валидация форм
+enableValidation(validationConfig);
 
 // обработчики
 buttonOpenProfilePopup.addEventListener("click", handleOpenEditForm);
