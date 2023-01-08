@@ -9,7 +9,8 @@ const validationConfig = {
 };
 
 //переменные формы редактирования
-const popupEditProfile = document.querySelector(".popup_edit"); //подключаем бекграунд
+const popupEditProfile = document.querySelector(".popup_type_edit"); //подключаем бекграунд
+const buttonSaveProfilePopup = document.querySelector(".popup__edit-form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
 const inputName = popupEditProfile.querySelector(".popup__input_type_name"); // находим поле ввода Имя
 const inputJob = popupEditProfile.querySelector(".popup__input_type_job"); //находим поле ввода О себе
 const profileName = document.querySelector(".profile__title");
@@ -17,14 +18,12 @@ const profileJob = document.querySelector(".profile__subtitle");
 
 // переменные кнопок открыть-закрыть попап
 const buttonOpenProfilePopup = document.querySelector(".profile__button-edit"); // кнопка Редактировать профиль - открыть попап
-const buttonCloseProfilePopup = document.querySelector(".popup__close-edit"); //закрыть попап
-const buttonSaveProfilePopup = document.querySelector(".popup__edit-form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
+const buttonAddPlacePopup = document.querySelector(".profile__button-add"); // кнопка Добавить картинку - открыть попап
+const buttonCloseList = document.querySelectorAll(".popup__close"); //выбираем все элементы закрытия попапов в список
 
 // переменные формы добавления карточек
-const buttonAddPlacePopup = document.querySelector(".profile__button-add"); // кнопка Добавить картинку - открыть попап
-const buttonClosePlacePopup = document.querySelector(".popup__close-add"); //закрыть попап
 const buttonSavePlacePopup = document.querySelector(".popup__add-form");
-const popupAddPlace = document.querySelector(".popup_add"); //подключаем бекграунд
+const popupAddPlace = document.querySelector(".popup_type_add"); //подключаем бекграунд
 const inputPlace = popupAddPlace.querySelector(".popup__input_type_place"); // выбор поля ввода названия места
 const inputPlaceLink = popupAddPlace.querySelector(".popup__input_type_place-link"); // выбор поля добавления ссылки
 
@@ -35,10 +34,9 @@ const cardAllTemplate = document.querySelector("#card-template"); // мой temp
 const cardTemplate = cardAllTemplate.content.querySelector(".card__item");
 
 // Переменные попап открытия полноэкранной картинки
-const popupPreview = document.querySelector(".popup-preview");
-const previewImage = popupPreview.querySelector(".popup-preview__image");
-const titlePreviewImage = popupPreview.querySelector(".popup-preview__title");
-const buttonClosePreviewPopup = popupPreview.querySelector(".popup-preview__button-close");
+const popupPreview = document.querySelector(".popup_type_preview");
+const previewImage = popupPreview.querySelector(".popup__preview-image");
+const titlePreviewImage = popupPreview.querySelector(".popup__preview-title");
 
 // функции открыть-закрыть попап
 function openPopup(popup) {
@@ -48,7 +46,7 @@ function openPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.addEventListener("keydown", handleEscDown);
+  document.removeEventListener("keydown", handleEscDown);
 }
 
 function handleEscDown(evt) {
@@ -71,6 +69,7 @@ function handleSaveEditForm(event) {
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopup(popupEditProfile);
+  event.submitter.classList.add("popup__save_disabled");
 }
 
 // Функции создания из массива, удаления, лайка карточек
@@ -121,6 +120,7 @@ const handleAddPlace = (event) => {
   // inputPlaceLink.value = ""; вариант очищения инпутов
   // inputPlace.value = "";
   buttonSavePlacePopup.reset();
+  event.submitter.classList.add("popup__save_disabled");
   closePopup(popupAddPlace);
 };
 
@@ -129,39 +129,25 @@ enableValidation(validationConfig);
 
 // обработчики
 buttonOpenProfilePopup.addEventListener("click", handleOpenEditForm);
-buttonCloseProfilePopup.addEventListener("click", () => {
-  closePopup(popupEditProfile);
-});
+
 buttonSaveProfilePopup.addEventListener("submit", handleSaveEditForm);
 
 buttonAddPlacePopup.addEventListener("click", () => {
   openPopup(popupAddPlace);
 });
-buttonClosePlacePopup.addEventListener("click", () => {
-  closePopup(popupAddPlace);
-});
+
 buttonSavePlacePopup.addEventListener("submit", handleAddPlace);
 
-// Закрыть попап превью фото мест
-buttonClosePreviewPopup.addEventListener("click", () => {
-  closePopup(popupPreview);
-});
-
-//закрыть попапы кликом по оверлею
-popupEditProfile.addEventListener("click", (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupEditProfile);
-  }
-});
-
-popupAddPlace.addEventListener("click", (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupAddPlace);
-  }
-});
-
-popupPreview.addEventListener("click", (evt) => {
-  if (evt.currentTarget === evt.target) {
-    closePopup(popupPreview);
-  }
+//Сергей, какой шикарный совет по поводу общего обработчика закрытия!!! Спасибо огромное.
+// Общий обработчик закрытия попапов. Перебираем методом forEach.
+//Чтобы найти элемент с конкретным классом среди родителей есть специальный метод closest. Используем его btn.closest('.popup') - так мы можем найти попап внутри которого находится крестик. Вот его то нам и нужно закрыть.
+// в нем же устанавливаем слушатель для закрытия по оверлей
+buttonCloseList.forEach((btn) => {
+  const popup = btn.closest(".popup");
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.currentTarget === evt.target) {
+      closePopup(popup);
+    }
+  });
+  btn.addEventListener("click", () => closePopup(popup));
 });
