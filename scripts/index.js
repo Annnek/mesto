@@ -3,7 +3,6 @@ const validationConfig = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save",
   inactiveButtonClass: "popup__save_disabled",
-  activeButtonClass: "popup__save_valid",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
@@ -69,7 +68,6 @@ function handleSaveEditForm(event) {
   profileName.textContent = inputName.value;
   profileJob.textContent = inputJob.value;
   closePopup(popupEditProfile);
-  event.submitter.classList.add("popup__save_disabled");
 }
 
 // Функции создания из массива, удаления, лайка карточек
@@ -121,6 +119,7 @@ const handleAddPlace = (event) => {
   // inputPlace.value = "";
   buttonSavePlacePopup.reset();
   event.submitter.classList.add("popup__save_disabled");
+  event.submitter.disabled = true;
   closePopup(popupAddPlace);
 };
 

@@ -26,26 +26,12 @@ function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => !inputElement.validity.valid);
 }
 
-// function toggleButtonState(inputList, buttonElement, config) {
-//   if (hasInvalidInput(inputList)) {
-//     buttonElement.classList.remove(config.activeButtonClass);
-//     buttonElement.classList.add(config.inactiveButtonClass);
-//     buttonElement.disabled = true;
-//   } else {
-//     buttonElement.classList.add(config.activeButtonClass);
-//     buttonElement.classList.remove(config.inactiveButtonClass);
-//     buttonElement.disabled = false;
-//   }
-// }
-
 function disableSubmitButton(buttonElement, config) {
-  buttonElement.classList.remove(config.activeButtonClass);
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
 }
 
 function enableSubmitButton(buttonElement, config) {
-  buttonElement.classList.add(config.activeButtonClass);
   buttonElement.classList.remove(config.inactiveButtonClass);
   buttonElement.disabled = false;
 }
