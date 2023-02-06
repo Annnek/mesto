@@ -1,3 +1,8 @@
+import Card from "./card";
+import FormValidator from "./FormValidator";
+
+import { initialCards } from "./cardsArray.js";
+
 const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -70,35 +75,40 @@ function handleSaveEditForm(event) {
   closePopup(popupEditProfile);
 }
 
-// Функции создания из массива, удаления, лайка карточек
-const createCard = (imagePlace, titlePlace) => {
-  const place = cardTemplate.cloneNode(true);
-  const cardTemplateImage = place.querySelector(".card__image");
-  const cardTemplateTitle = place.querySelector(".card__title");
-  const buttonTrash = place.querySelector(".card__trash");
-  const buttonLike = place.querySelector(".card__pic-heart");
+//функция создания карточки
+function createCard(value) {
+  const card = new Card(value, ".element-template", openImage).generateCard();
+  return card;
+}
 
-  cardTemplateImage.src = imagePlace;
-  cardTemplateImage.alt = titlePlace;
-  cardTemplateTitle.textContent = titlePlace;
+// const createCard = (imagePlace, titlePlace) => {
+//   const place = cardTemplate.cloneNode(true);
+//   const cardTemplateImage = place.querySelector(".card__image");
+//   const cardTemplateTitle = place.querySelector(".card__title");
+//   const buttonTrash = place.querySelector(".card__trash");
+//   const buttonLike = place.querySelector(".card__pic-heart");
 
-  //удалить место
-  buttonTrash.addEventListener("click", () => {
-    place.remove();
-  });
-  // поставить лайк
-  buttonLike.addEventListener("click", function (event) {
-    event.target.classList.toggle("card__pic-heart_active");
-  });
+//   cardTemplateImage.src = imagePlace;
+//   cardTemplateImage.alt = titlePlace;
+//   cardTemplateTitle.textContent = titlePlace;
 
-  cardTemplateImage.addEventListener("click", () => {
-    openPopup(popupPreview);
-    previewImage.src = imagePlace;
-    previewImage.alt = titlePlace;
-    titlePreviewImage.textContent = titlePlace;
-  });
-  return place;
-};
+//   //удалить место
+//   buttonTrash.addEventListener("click", () => {
+//     place.remove();
+//   });
+//   // поставить лайк
+//   buttonLike.addEventListener("click", function (event) {
+//     event.target.classList.toggle("card__pic-heart_active");
+//   });
+
+//   cardTemplateImage.addEventListener("click", () => {
+//     openPopup(popupPreview);
+//     previewImage.src = imagePlace;
+//     previewImage.alt = titlePlace;
+//     titlePreviewImage.textContent = titlePlace;
+//   });
+//   return place;
+// };
 
 const renderCard = (imagePlace, titlePlace) => {
   cardElement.prepend(createCard(imagePlace, titlePlace));
@@ -123,8 +133,8 @@ const handleAddPlace = (event) => {
   closePopup(popupAddPlace);
 };
 
-//валидация форм
-enableValidation(validationConfig);
+// //валидация форм
+// enableValidation(validationConfig);
 
 // обработчики
 buttonOpenProfilePopup.addEventListener("click", handleOpenEditForm);
