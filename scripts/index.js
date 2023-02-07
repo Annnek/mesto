@@ -26,7 +26,7 @@ const inputPlaceLink = popupAddPlace.querySelector(".popup__input_type_place-lin
 const cardLists = document.querySelector(".elements");
 const cardsContainer = document.querySelector(".card");
 const cardAllTemplate = document.querySelector("#card-template"); // мой template
-const cardTemplate = cardAllTemplate.content.querySelector(".card__item");
+const cardImage = cardAllTemplate.content.querySelector(".card__image");
 
 // Переменные попап открытия полноэкранной картинки
 const popupPreview = document.querySelector(".popup_type_preview");
@@ -78,9 +78,17 @@ const handleAddPlace = (event) => {
   buttonSavePlacePopup.reset();
 };
 
+//открыть полноразмерную картинку
+function openPreviewImage(name, link) {
+  openPopup(popupPreview);
+  previewImage.src = link;
+  previewImage.alt = name;
+  titlePreviewImage.textContent = name;
+}
+
 //функция создания карточки
 function createCard(data) {
-  const card = new Card(data, "#card-template", handleAddPlace).generateCard();
+  const card = new Card(data, "#card-template", openPreviewImage).generateCard();
   return card;
 }
 
@@ -94,7 +102,6 @@ function render() {
     if (newCard) renderCard(newCard, cardsContainer);
   });
 }
-
 render();
 
 // Для каждой проверяемой формы создайте экземпляр класса FormValidator.
@@ -114,6 +121,8 @@ buttonAddPlacePopup.addEventListener("click", () => {
 });
 
 buttonSavePlacePopup.addEventListener("submit", handleAddPlace);
+
+// cardImage.addEventListener("click", openPreviewImage);
 
 // Общий обработчик закрытия попапов. Перебираем методом forEach.
 //Чтобы найти элемент с конкретным классом среди родителей есть специальный метод closest. Используем его btn.closest('.popup') - так мы можем найти попап внутри которого находится крестик. Вот его то нам и нужно закрыть.

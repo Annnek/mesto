@@ -20,7 +20,7 @@ export default class Card {
   };
 
   _deleteCard = () => {
-    this._trash.closest(".card").remove();
+    this._trash.closest(".card__item").remove();
   };
 
   _toggleCardLike = () => {
