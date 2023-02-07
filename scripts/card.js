@@ -28,9 +28,9 @@ export default class Card {
   };
 
   _setEventHandlers = () => {
-    this._trash.addEventListener("click", () => this._deleteCard());
-    this._like.addEventListener("click", () => this._toggleCardLike());
     this._image.addEventListener("click", () => this._handleClickCard(this._name, this._link));
+    this._like.addEventListener("click", () => this._toggleCardLike());
+    this._trash.addEventListener("click", () => this._deleteCard());
   };
 
   _fillCard = () => {

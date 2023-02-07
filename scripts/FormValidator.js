@@ -6,6 +6,10 @@ export default class FormValidator {
     this._inputList = Array.from(this._form.querySelectorAll(this._config.inputSelector));
   }
 
+  enableValidation() {
+    this._setEventListeners();
+  }
+
   _showInputError(inputElement) {
     const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     errorElement.classList.add(this._config.errorClass);
@@ -35,13 +39,13 @@ export default class FormValidator {
   }
 
   disableSubmitButton() {
-    this._buttonElement.classList.add(this._config.inactiveButtonClass);
-    this._buttonElement.disabled = true;
+    this._buttonSave.classList.add(this._config.inactiveButtonClass);
+    this._buttonSave.disabled = true;
   }
 
   enableSubmitButton() {
-    this._buttonElement.classList.remove(this._config.inactiveButtonClass);
-    this._buttonElement.disabled = false;
+    this._buttonSave.classList.remove(this._config.inactiveButtonClass);
+    this._buttonSave.disabled = false;
   }
 
   // функция проверки валидности и блокировки кнопок, если хоть один инпут не валиден
@@ -54,21 +58,14 @@ export default class FormValidator {
   }
 
   //находим список инпутов и навешиваем обработчики на инпуты
-  _setEventListeners(inputList, buttonElement) {
-    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-    const buttonElement = formElement.querySelector(config.submitButtonSelector);
-
-    this._toggleButtonState(this._inputList, this._buttonElement);
+  _setEventListeners() {
+    this._toggleButtonState(this._inputList, this._buttonSave);
 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
-        this._toggleButtonState(this._inputList, this._buttonElement);
+        this._toggleButtonState(this._inputList, this._buttonSave);
       });
     });
-  }
-
-  enableValidation() {
-    this._setEventListeners();
   }
 }

@@ -23,8 +23,8 @@ const inputPlace = popupAddPlace.querySelector(".popup__input_type_place"); // �
 const inputPlaceLink = popupAddPlace.querySelector(".popup__input_type_place-link"); // выбор поля добавления ссылки
 
 // переменные контейнера - список мест
-const cardsContainer = document.querySelector(".elements");
-const cardElement = cardsContainer.querySelector(".card");
+const cardLists = document.querySelector(".elements");
+const cardsContainer = document.querySelector(".card");
 const cardAllTemplate = document.querySelector("#card-template"); // мой template
 const cardTemplate = cardAllTemplate.content.querySelector(".card__item");
 
@@ -53,9 +53,10 @@ function handleEscDown(evt) {
 
 // функции попап редактирования
 function handleOpenEditForm() {
-  openPopup(popupEditProfile);
   inputName.value = profileName.textContent; //строке ввода имени присваиваем значение Title
   inputJob.value = profileJob.textContent; // строке ввода профессии присваиваем значение subtitle
+  validatorFormEditProfile.disableSubmitButton();
+  openPopup(popupEditProfile);
 }
 
 function handleSaveEditForm(event) {
@@ -66,67 +67,42 @@ function handleSaveEditForm(event) {
   closePopup(popupEditProfile);
 }
 
-//функция создания карточки
-function createCard(data) {
-  const card = new Card(data, "#card-template", handleAddPlace);
-  const cardElement = card.generateCard();
-  return cardElement;
-}
-
-// const createCard = (imagePlace, titlePlace) => {
-//   const place = cardTemplate.cloneNode(true);
-//   const cardTemplateImage = place.querySelector(".card__image");
-//   const cardTemplateTitle = place.querySelector(".card__title");
-//   const buttonTrash = place.querySelector(".card__trash");
-//   const buttonLike = place.querySelector(".card__pic-heart");
-
-//   cardTemplateImage.src = imagePlace;
-//   cardTemplateImage.alt = titlePlace;
-//   cardTemplateTitle.textContent = titlePlace;
-
-//   //удалить место
-//   buttonTrash.addEventListener("click", () => {
-//     place.remove();
-//   });
-//   // поставить лайк
-//   buttonLike.addEventListener("click", function (event) {
-//     event.target.classList.toggle("card__pic-heart_active");
-//   });
-
-//   cardTemplateImage.addEventListener("click", () => {
-//     openPopup(popupPreview);
-//     previewImage.src = imagePlace;
-//     previewImage.alt = titlePlace;
-//     titlePreviewImage.textContent = titlePlace;
-//   });
-//   return place;
-// };
-
-const renderCard = (imagePlace, titlePlace) => {
-  cardElement.prepend(createCard(imagePlace, titlePlace));
-};
-
-initialCards.forEach((card) => {
-  renderCard(card.link, card.name);
-});
-
 // добавить место по кнопке +
 const handleAddPlace = (event) => {
   event.preventDefault();
-  const imagePlace = inputPlaceLink.value;
   const titlePlace = inputPlace.value;
-  renderCard(imagePlace, titlePlace);
-
-  // inputPlaceLink.value = ""; вариант очищения инпутов
-  // inputPlace.value = "";
-  buttonSavePlacePopup.reset();
-  event.submitter.classList.add("popup__save_disabled");
-  event.submitter.disabled = true;
+  const imagePlace = inputPlaceLink.value;
+  const newCard = createCard({ titlePlace, imagePlace });
+  if (newCard) renderCard(newCard, cardsContainer);
   closePopup(popupAddPlace);
+  buttonSavePlacePopup.reset();
 };
 
-// //валидация форм
-// enableValidation(validationConfig);
+//функция создания карточки
+function createCard(data) {
+  const card = new Card(data, "#card-template", handleAddPlace).generateCard();
+  return card;
+}
+
+function renderCard(card, cardsContainer) {
+  cardsContainer.prepend(card);
+}
+
+function render() {
+  initialCards.reverse().forEach((value) => {
+    const newCard = createCard(value);
+    if (newCard) renderCard(newCard, cardsContainer);
+  });
+}
+
+render();
+
+// Для каждой проверяемой формы создайте экземпляр класса FormValidator.
+const validatorFormEditProfile = new FormValidator(validationConfig, buttonSaveProfilePopup);
+const validatorFormAddPlace = new FormValidator(validationConfig, buttonSavePlacePopup);
+
+validatorFormEditProfile.enableValidation();
+validatorFormAddPlace.enableValidation();
 
 // обработчики
 buttonOpenProfilePopup.addEventListener("click", handleOpenEditForm);
@@ -139,7 +115,6 @@ buttonAddPlacePopup.addEventListener("click", () => {
 
 buttonSavePlacePopup.addEventListener("submit", handleAddPlace);
 
-//Сергей, какой шикарный совет по поводу общего обработчика закрытия!!! Спасибо огромное.
 // Общий обработчик закрытия попапов. Перебираем методом forEach.
 //Чтобы найти элемент с конкретным классом среди родителей есть специальный метод closest. Используем его btn.closest('.popup') - так мы можем найти попап внутри которого находится крестик. Вот его то нам и нужно закрыть.
 // в нем же устанавливаем слушатель для закрытия по оверлей
