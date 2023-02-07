@@ -70,10 +70,11 @@ function handleSaveEditForm(event) {
 // добавить место по кнопке +
 const handleAddPlace = (event) => {
   event.preventDefault();
-  const titlePlace = inputPlace.value;
-  const imagePlace = inputPlaceLink.value;
-  const newCard = createCard({ titlePlace, imagePlace });
+  const name = inputPlace.value;
+  const link = inputPlaceLink.value;
+  const newCard = createCard({ name, link });
   if (newCard) renderCard(newCard, cardsContainer);
+  validatorFormAddPlace.disableSubmitButton();
   closePopup(popupAddPlace);
   buttonSavePlacePopup.reset();
 };
