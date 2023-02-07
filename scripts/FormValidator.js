@@ -54,9 +54,9 @@ export default class FormValidator {
   }
 
   //находим список инпутов и навешиваем обработчики на инпуты
-  _setEventListeners() {
-    // const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
-    // const buttonElement = formElement.querySelector(config.submitButtonSelector);
+  _setEventListeners(inputList, buttonElement) {
+    const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
     this._toggleButtonState(this._inputList, this._buttonElement);
 

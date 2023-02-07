@@ -1,16 +1,7 @@
-import Card from "./card";
-import FormValidator from "./FormValidator";
-
-import { initialCards } from "./cardsArray.js";
-
-const validationConfig = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__save",
-  inactiveButtonClass: "popup__save_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-};
+import Card from "./card.js";
+import FormValidator from "./FormValidator.js";
+import { initialCards } from "./initialCards.js";
+import { validationConfig } from "./validationConfig.js";
 
 //переменные формы редактирования
 const popupEditProfile = document.querySelector(".popup_type_edit"); //подключаем бекграунд
@@ -76,9 +67,10 @@ function handleSaveEditForm(event) {
 }
 
 //функция создания карточки
-function createCard(value) {
-  const card = new Card(value, ".element-template", openImage).generateCard();
-  return card;
+function createCard(data) {
+  const card = new Card(data, "#card-template", handleAddPlace);
+  const cardElement = card.generateCard();
+  return cardElement;
 }
 
 // const createCard = (imagePlace, titlePlace) => {
