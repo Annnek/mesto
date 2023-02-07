@@ -1,11 +1,11 @@
-import Card from "./card.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import { initialCards } from "./initialCards.js";
 import { validationConfig } from "./validationConfig.js";
 
 //переменные формы редактирования
 const popupEditProfile = document.querySelector(".popup_type_edit"); //подключаем бекграунд
-const buttonSaveProfilePopup = document.querySelector(".popup__edit-form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
+const formEditProfile = document.querySelector(".popup__edit-form"); //выбираем форму, а не отдельную кнопку. Если несколько кнопок, выбираем по id
 const inputName = popupEditProfile.querySelector(".popup__input_type_name"); // находим поле ввода Имя
 const inputJob = popupEditProfile.querySelector(".popup__input_type_job"); //находим поле ввода О себе
 const profileName = document.querySelector(".profile__title");
@@ -17,7 +17,7 @@ const buttonAddPlacePopup = document.querySelector(".profile__button-add"); // �
 const buttonCloseList = document.querySelectorAll(".popup__close"); //выбираем все элементы закрытия попапов в список
 
 // переменные формы добавления карточек
-const buttonSavePlacePopup = document.querySelector(".popup__add-form");
+const formAddCard = document.querySelector(".popup__add-form");
 const popupAddPlace = document.querySelector(".popup_type_add"); //подключаем бекграунд
 const inputPlace = popupAddPlace.querySelector(".popup__input_type_place"); // выбор поля ввода названия места
 const inputPlaceLink = popupAddPlace.querySelector(".popup__input_type_place-link"); // выбор поля добавления ссылки
@@ -76,7 +76,7 @@ const handleAddPlace = (event) => {
   if (newCard) renderCard(newCard, cardsContainer);
   validatorFormAddPlace.disableSubmitButton();
   closePopup(popupAddPlace);
-  buttonSavePlacePopup.reset();
+  formAddCard.reset();
 };
 
 //открыть полноразмерную картинку
@@ -97,17 +97,17 @@ function renderCard(card, cardsContainer) {
   cardsContainer.prepend(card);
 }
 
-function render() {
+function renderInitialCards() {
   initialCards.reverse().forEach((value) => {
     const newCard = createCard(value);
     if (newCard) renderCard(newCard, cardsContainer);
   });
 }
-render();
+renderInitialCards();
 
 // Для каждой проверяемой формы создайте экземпляр класса FormValidator.
-const validatorFormEditProfile = new FormValidator(validationConfig, buttonSaveProfilePopup);
-const validatorFormAddPlace = new FormValidator(validationConfig, buttonSavePlacePopup);
+const validatorFormEditProfile = new FormValidator(validationConfig, formEditProfile);
+const validatorFormAddPlace = new FormValidator(validationConfig, formAddCard);
 
 validatorFormEditProfile.enableValidation();
 validatorFormAddPlace.enableValidation();
@@ -115,13 +115,13 @@ validatorFormAddPlace.enableValidation();
 // обработчики
 buttonOpenProfilePopup.addEventListener("click", handleOpenEditForm);
 
-buttonSaveProfilePopup.addEventListener("submit", handleSaveEditForm);
+formEditProfile.addEventListener("submit", handleSaveEditForm);
 
 buttonAddPlacePopup.addEventListener("click", () => {
   openPopup(popupAddPlace);
 });
 
-buttonSavePlacePopup.addEventListener("submit", handleAddPlace);
+formAddCard.addEventListener("submit", handleAddPlace);
 
 // cardImage.addEventListener("click", openPreviewImage);
 
