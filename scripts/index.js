@@ -1,7 +1,8 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
-import { initialCards } from "./initialCards.js";
-import { validationConfig } from "./validationConfig.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+import Popup from 
+import { initialCards } from "../utils/initialCards.js";
+import { validationConfig } from "../utils/validationConfig.js";
 
 //переменные формы редактирования
 const popupEditProfile = document.querySelector(".popup_type_edit"); //подключаем бекграунд
@@ -29,27 +30,9 @@ const cardAllTemplate = document.querySelector("#card-template"); // мой temp
 const cardImage = cardAllTemplate.content.querySelector(".card__image");
 
 // Переменные попап открытия полноэкранной картинки
-const popupPreview = document.querySelector(".popup_type_preview");
-const previewImage = popupPreview.querySelector(".popup__preview-image");
-const titlePreviewImage = popupPreview.querySelector(".popup__preview-title");
-
-// функции открыть-закрыть попап
-function openPopup(popup) {
-  document.addEventListener("keydown", handleEscDown); //чтобы отслеживать нажатие Esc только когда открыт попап
-  popup.classList.add("popup_opened");
-}
-
-function closePopup(popup) {
-  popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", handleEscDown);
-}
-
-function handleEscDown(evt) {
-  if (evt.code == "Escape") {
-    const popup = document.querySelector(".popup_opened");
-    closePopup(popup);
-  }
-}
+// const popupPreview = document.querySelector(".popup_type_preview");
+// const previewImage = popupPreview.querySelector(".popup__preview-image");
+// const titlePreviewImage = popupPreview.querySelector(".popup__preview-title");
 
 // функции попап редактирования
 function handleOpenEditForm() {
@@ -80,12 +63,12 @@ const handleAddPlace = (event) => {
 };
 
 //открыть полноразмерную картинку
-function openPreviewImage(name, link) {
-  openPopup(popupPreview);
-  previewImage.src = link;
-  previewImage.alt = name;
-  titlePreviewImage.textContent = name;
-}
+// function openPreviewImage(name, link) {
+//   openPopup(popupPreview);
+//   previewImage.src = link;
+//   previewImage.alt = name;
+//   titlePreviewImage.textContent = name;
+// }
 
 //функция создания карточки
 function createCard(data) {
@@ -128,12 +111,13 @@ formAddCard.addEventListener("submit", handleAddPlace);
 // Общий обработчик закрытия попапов. Перебираем методом forEach.
 //Чтобы найти элемент с конкретным классом среди родителей есть специальный метод closest. Используем его btn.closest('.popup') - так мы можем найти попап внутри которого находится крестик. Вот его то нам и нужно закрыть.
 // в нем же устанавливаем слушатель для закрытия по оверлей
-buttonCloseList.forEach((btn) => {
-  const popup = btn.closest(".popup");
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.currentTarget === evt.target) {
-      closePopup(popup);
-    }
-  });
-  btn.addEventListener("click", () => closePopup(popup));
-});
+
+// buttonCloseList.forEach((btn) => {
+//   const popup = btn.closest(".popup");
+//   popup.addEventListener("mousedown", (evt) => {
+//     if (evt.currentTarget === evt.target) {
+//       closePopup(popup);
+//     }
+//   });
+//   btn.addEventListener("click", () => closePopup(popup));
+// });
