@@ -24,24 +24,11 @@ export default class Popup {
   }
 
   //setEventListeners добавляет слушатель клика иконке закрытия попапа. Модальное окно также закрывается при клике на затемнённую область вокруг формы.
-  //Общий обработчик закрытия попапов. Перебираем методом forEach.
-  //Чтобы найти элемент с конкретным классом среди родителей есть специальный метод closest. Используем его btn.closest('.popup') - так мы можем найти попап внутри которого находится крестик. Вот его то нам и нужно закрыть.
-  // в нем же устанавливаем слушатель для закрытия по оверлей
-
   setEventListeners() {
-    buttonCloseList.forEach((btn) => {
-      this._popup.addEventListener("mousedown", (evt) => {
-        if (evt.currentTarget === evt.target) {
-          this.close();
-        }
-      });
-      btn.addEventListener("click", () => this.close());
+    this._popup.addEventListener("mousedown", (evt) => {
+      if (evt.target.classList.contains("popup_opened") || evt.target.classList.contains("popup__close")) {
+        this.close();
+      }
     });
-
-    // this._popup.addEventListener('mousedown', (evt) => {
-    //     if (evt.target.classList.contains('popup_opened') || evt.target.classList.contains('popup__close')) {
-    //       this.close();
-    //     }
-    //   })
   }
 }

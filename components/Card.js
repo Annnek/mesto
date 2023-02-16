@@ -1,14 +1,17 @@
 // Функции создания из массива, удаления, лайка карточек
 export default class Card {
-  constructor(data, templateSelector, handleClickCard) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleClickCard = handleClickCard;
+    this._handleCardClick = handleCardClick;
   }
 
   generateCard = () => {
-    this._cardElement = document.querySelector(this._templateSelector).content.cloneNode(true);
+    this._cardElement = document
+      .querySelector(this._templateSelector)
+      .content.querySelector(".card__item")
+      .cloneNode(true);
     this._title = this._cardElement.querySelector(".card__title");
     this._image = this._cardElement.querySelector(".card__image");
     this._trash = this._cardElement.querySelector(".card__trash");
@@ -20,7 +23,7 @@ export default class Card {
   };
 
   _deleteCard = () => {
-    this._trash.closest(".card__item").remove();
+    this._cardElement.remove();
   };
 
   _toggleCardLike = () => {
@@ -28,7 +31,9 @@ export default class Card {
   };
 
   _setEventHandlers = () => {
-    this._image.addEventListener("click", () => this._handleClickCard(this._name, this._link));
+    this._image.addEventListener("click", () =>
+      this._handleCardClick(this._name, this._link)
+    );
     this._like.addEventListener("click", () => this._toggleCardLike());
     this._trash.addEventListener("click", () => this._deleteCard());
   };

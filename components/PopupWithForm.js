@@ -8,6 +8,7 @@ export default class PopupWithForm extends Popup {
     this._inputList = this._form.querySelectorAll(".popup__input");
   }
 
+  // собирает данные всех полей формы.
   _getInputValues() {
     const values = {};
     this._inputList.forEach((input) => {
@@ -16,6 +17,7 @@ export default class PopupWithForm extends Popup {
     return values;
   }
 
+  //Перезаписывает родительский метод, добавляет обработчик клика иконке закрытия, добавляет обработчик сабмита формы.
   setEventListeners = () => {
     super.setEventListeners();
     this._form.addEventListener("submit", () => {
@@ -24,6 +26,7 @@ export default class PopupWithForm extends Popup {
     });
   };
 
+  //Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
   close() {
     super.close();
     this._form.reset();

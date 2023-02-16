@@ -7,10 +7,11 @@ export default class PopupWithImage extends Popup {
     this._popupImageTitle = this._popup.querySelector(".popup__preview-title");
   }
 
-  open = (title, img) => {
+  //вставляет в попап картинку с src изображения и подписью к картинке.
+  open = (title, image) => {
     super.open();
     this._popupImageTitle.textContent = title;
     this._popupBigImage.alt = title;
-    this._popupBigImage.src = img;
+    this._popupBigImage.src = image;
   };
 }
