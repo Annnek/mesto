@@ -27,6 +27,7 @@ export const inputPlaceLink = document.querySelector(
 );
 
 export const cardsContainer = document.querySelector(".card");
+export const cardsContainerSelector = ".card";
 
 // export const cardSetting = {
 //   cardsContainer: ".card",

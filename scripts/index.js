@@ -17,6 +17,7 @@ import {
   inputPlaceName,
   inputPlaceLink,
   cardsContainer,
+  cardsContainerSelector,
 } from "../utils/constants.js";
 
 //import classes
@@ -46,7 +47,7 @@ const cardSection = new Section(
       cardSection.addItem(newCard);
     },
   },
-  cardsContainer
+  cardsContainerSelector
 );
 
 cardSection.renderItems();
@@ -63,8 +64,8 @@ const userInfo = new UserInfo(profileName, profileJob);
 //функция открытия попапа редактирования профиля
 function openEditProfile() {
   const { profileName, profileJob } = userInfo.getUserInfo();
-  inputName.value = profileName;
-  inputJob.value = profileJob;
+  inputName.value = profileName.textContent;
+  inputJob.value = profileJob.textContent;
   validatorFormEditProfile.disableSubmitButton();
   classEditPopup.open();
 }
@@ -74,15 +75,6 @@ function openAddCard() {
   validatorFormAddPlace.disableSubmitButton();
   classCardPopup.open();
 }
-
-// // функции открыть попап редактирования
-// function handleOpenEditForm() {
-//   const { title, subtitle } = userInfo.getUserInfo();
-//   inputName.value = profileName.textContent; //строке ввода имени присваиваем значение Title
-//   inputJob.value = profileJob.textContent; // строке ввода профессии присваиваем значение subtitle
-//   validatorFormEditProfile.disableSubmitButton();
-//   openPopup(popupEditProfile);
-// }
 
 // function handleSaveEditForm(event) {
 //   event.preventDefault();
