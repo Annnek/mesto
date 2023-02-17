@@ -8,10 +8,10 @@ export default class PopupWithImage extends Popup {
   }
 
   //вставляет в попап картинку с src изображения и подписью к картинке.
-  open = (title, image) => {
+  open = (item) => {
     super.open();
-    this._popupImageTitle.textContent = title;
-    this._popupBigImage.alt = title;
-    this._popupBigImage.src = image;
+    this._popupImageTitle.textContent = item.name;
+    this._popupBigImage.alt = item.name;
+    this._popupBigImage.src = item.link;
   };
 }

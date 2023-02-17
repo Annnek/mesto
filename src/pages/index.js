@@ -7,18 +7,15 @@ import {
   popupBigImage,
   buttonEditProfile,
   buttonAddPlace,
-  buttonCloseList,
   formEditProfile,
   profileName,
   profileJob,
   inputName,
   inputJob,
   formAddCard,
-  inputPlaceName,
-  inputPlaceLink,
-  cardsContainer,
   cardsContainerSelector,
 } from "../utils/constants.js";
+import "./index.css";
 
 //import classes
 import Card from "../components/Card.js";
@@ -31,8 +28,10 @@ import UserInfo from "../components/UserInfo.js";
 //функции
 
 //создание карточки
-function createCard(data) {
-  const card = new Card(data, "#card-template", openFullImage).generateCard();
+function createCard(item) {
+  const card = new Card(item, "#card-template", () =>
+    popupOpenImage.open(item)
+  ).generateCard();
   return card;
 }
 
@@ -51,9 +50,9 @@ const cardSection = new Section(
 cardSection.renderItems();
 
 //открыть полноразмерную картинку
-function openFullImage(name, link) {
-  popupOpenImage.open(name, link);
-}
+// function openFullImage(item) {
+//   popupOpenImage.open(item.name, item.link);
+// }
 
 //редактирование профиля
 //Класс UserInfo отвечает за управление отображением информации о пользователе на странице.
@@ -64,23 +63,17 @@ const userInfo = new UserInfo({
 
 //передача текста на страницу профиля редактирования полей Имя, О себе
 function formValues(value) {
-  userInfo.setUserInfo(value);
+  userInfo.setUserInfo(value.inputName, value.inputJob);
   classEditPopup.close();
 }
 
 //функция открытия попапа редактирования профиля
-// function openEditProfile() {
-//   const { profileName, profileJob } = userInfo.getUserInfo();
-//   inputName.value = profileName.textContent;
-//   inputJob.value = profileJob.textContent;
-//   validatorFormEditProfile.disableSubmitButton();
-//   classEditPopup.open();
-// }
-
 function openEditProfile() {
-  classEditPopup.open();
-  classEditPopup.setInputsValues(userInfo.getUserInfo());
+  const { name, job } = userInfo.getUserInfo();
+  inputName.value = name;
+  inputJob.value = job;
   validatorFormEditProfile.disableSubmitButton();
+  classEditPopup.open();
 }
 
 //Добавление карточки
@@ -89,26 +82,6 @@ function openAddCard() {
   validatorFormAddPlace.disableSubmitButton();
   classCardPopup.open();
 }
-
-// function handleSaveEditForm(event) {
-//   event.preventDefault();
-//   // Берем значения полей ввода jobInput и nameInput из свойства value и вставляем в элементы title и subtitle с помощью textContent
-//   profileName.textContent = inputName.value;
-//   profileJob.textContent = inputJob.value;
-//   closePopup(popupEditProfile);
-// }
-
-// // добавить место по кнопке +
-// const handleAddPlace = (event) => {
-//   event.preventDefault();
-//   const name = inputPlace.value;
-//   const link = inputPlaceLink.value;
-//   const newCard = createCard({ name, link });
-//   if (newCard) renderCard(newCard, cardsContainer);
-//   validatorFormAddPlace.disableSubmitButton();
-//   closePopup(popupAddPlace);
-//   formAddCard.reset();
-// };
 
 // Для каждой проверяемой формы создайте экземпляр класса FormValidator - валидация формы редактирования.
 const validatorFormEditProfile = new FormValidator(

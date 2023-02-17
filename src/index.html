@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
@@ -17,7 +16,7 @@
           <div class="profile__info">
             <img
               class="profile__image"
-              src="./images/kusto.jpg"
+              src="<%=require('./images/kusto.jpg')%>"
               alt="Фотография Кусто" />
             <div class="profile__title-block">
               <h1 class="profile__title overflow">Жак-Ив Кусто</h1>
@@ -29,48 +28,15 @@
         </section>
         <section class="elements">
           <ul class="card">
-            <!-- <li class="card__item">
+            <!-- 
+              <li class="card__item">
               <img class="card__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Природа Карачаево-Черкессии" />
               <div class="card__name">
                 <h2 class="card__title overflow">Карачаево-Черкессия</h2>
                 <button class="card__pic-heart" type="button"></button>
               </div>
-            </li>
-            <li class="card__item">
-              <img class="card__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Гора Эльбрус" />
-              <div class="card__name">
-                <h2 class="card__title overflow">Гора Эльбрус</h2>
-                <button class="card__pic-heart" type="button"></button>
-              </div>
-            </li>
-            <li class="card__item">
-              <img class="card__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай" />
-              <div class="card__name">
-                <h2 class="card__title overflow">Домбай</h2>
-                <button class="card__pic-heart" type="button"></button>
-              </div>
-            </li>
-            <li class="card__item">
-              <img class="card__image" src="./images/anna-frizen-murmansk.jpg" alt="Фото Мурманска" />
-              <div class="card__name">
-                <h2 class="card__title overflow">Мурманск</h2>
-                <button class="card__pic-heart" type="button"></button>
-              </div>
-            </li>
-            <li class="card__item">
-              <img class="card__image" src="./images/ekaterina-sazonova-baikal.jpg" alt="Озеро Байкал" />
-              <div class="card__name">
-                <h2 class="card__title overflow">Байкал</h2>
-                <button class="card__pic-heart" type="button"></button>
-              </div>
-            </li>
-            <li class="card__item">
-              <img class="card__image" src="./images/daniil-silantev-kamchatka.jpg" alt="Камчатка" />
-              <div class="card__name">
-                <h2 class="card__title overflow">Камчатка</h2>
-                <button class="card__pic-heart" type="button"></button>
-              </div>
-            </li> -->
+            </li>            
+            -->
           </ul>
         </section>
       </main>
@@ -118,7 +84,7 @@
             <input
               class="popup__input popup__input_type_place"
               type="text"
-              name="input-place"
+              name="name"
               id="inputPlace"
               placeholder="Название"
               minlength="2"
@@ -128,7 +94,7 @@
             <input
               class="popup__input popup__input_type_place-link"
               type="url"
-              name="input-place-link"
+              name="link"
               id="inputPlaceLink"
               placeholder="Ссылка на картинку"
               required />
@@ -164,6 +130,5 @@
         <h2 class="footer__title">© 2022 Mesto Russia</h2>
       </footer>
     </div>
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>
