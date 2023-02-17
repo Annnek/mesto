@@ -32,9 +32,7 @@ import UserInfo from "../components/UserInfo.js";
 
 //создание карточки
 function createCard(data) {
-  const card = new Card(data, "#card-template", () =>
-    popupOpenImage.open(data)
-  ).generateCard();
+  const card = new Card(data, "#card-template", openFullImage).generateCard();
   return card;
 }
 
@@ -52,24 +50,40 @@ const cardSection = new Section(
 
 cardSection.renderItems();
 
+//открыть полноразмерную картинку
+function openFullImage(name, link) {
+  popupOpenImage.open(name, link);
+}
+
+//редактирование профиля
+//Класс UserInfo отвечает за управление отображением информации о пользователе на странице.
+const userInfo = new UserInfo({
+  name: profileName,
+  job: profileJob,
+});
+
 //передача текста на страницу профиля редактирования полей Имя, О себе
 function formValues(value) {
-  userInfo.setUserInfo(value.inputName, value.inputJob);
+  userInfo.setUserInfo(value);
   classEditPopup.close();
 }
 
-//Класс UserInfo отвечает за управление отображением информации о пользователе на странице.
-const userInfo = new UserInfo(profileName, profileJob);
-
 //функция открытия попапа редактирования профиля
+// function openEditProfile() {
+//   const { profileName, profileJob } = userInfo.getUserInfo();
+//   inputName.value = profileName.textContent;
+//   inputJob.value = profileJob.textContent;
+//   validatorFormEditProfile.disableSubmitButton();
+//   classEditPopup.open();
+// }
+
 function openEditProfile() {
-  const { profileName, profileJob } = userInfo.getUserInfo();
-  inputName.value = profileName.textContent;
-  inputJob.value = profileJob.textContent;
-  validatorFormEditProfile.disableSubmitButton();
   classEditPopup.open();
+  classEditPopup.setInputsValues(userInfo.getUserInfo());
+  validatorFormEditProfile.disableSubmitButton();
 }
 
+//Добавление карточки
 //функция открытия попапа для создания новой карточки
 function openAddCard() {
   validatorFormAddPlace.disableSubmitButton();
@@ -118,12 +132,12 @@ const classCardPopup = new PopupWithForm(popupAddCard, (item) => {
 //создаем экземпляр формы открытия полной картинки - объект класса PopupWithImage
 const popupOpenImage = new PopupWithImage(popupBigImage);
 
-classEditPopup.setEventListeners();
-classCardPopup.setEventListeners();
-popupOpenImage.setEventListeners();
-
 // обработчики
 
 //кнопки открытия попапов
-buttonAddPlace.addEventListener("click", () => openAddCard());
 buttonEditProfile.addEventListener("click", () => openEditProfile());
+buttonAddPlace.addEventListener("click", () => openAddCard());
+
+classEditPopup.setEventListeners();
+classCardPopup.setEventListeners();
+popupOpenImage.setEventListeners();

@@ -17,10 +17,18 @@ export default class PopupWithForm extends Popup {
     return values;
   }
 
+  // Возвращение input
+  setInputsValues(data) {
+    this._inputList.forEach((input) => {
+      input.value = data[input.name];
+    });
+  }
+
   //Перезаписывает родительский метод, добавляет обработчик клика иконке закрытия, добавляет обработчик сабмита формы.
   setEventListeners = () => {
     super.setEventListeners();
-    this._form.addEventListener("submit", () => {
+    this._form.addEventListener("submit", (evt) => {
+      evt.preventDefault();
       this._handleSubmitForm(this._getInputValues());
       this.close();
     });

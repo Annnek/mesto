@@ -1,7 +1,7 @@
 //попапы
-export const popupEditProfile = document.querySelector(".popup_type_edit");
-export const popupAddCard = document.querySelector(".popup_type_add");
-export const popupBigImage = document.querySelector(".popup_type_preview");
+export const popupEditProfile = ".popup_type_edit";
+export const popupAddCard = ".popup_type_add";
+export const popupBigImage = ".popup_type_preview";
 
 // переменные кнопок открыть-закрыть попап
 export const buttonEditProfile = document.querySelector(
