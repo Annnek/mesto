@@ -36,10 +36,21 @@ module.exports = {
           "postcss-loader",
         ],
       },
+      // регулярное выражение, которое ищет все файлы с такими расширениями
+      //Чтобы все файлы с указанными расширениями не лежали в одной директории, было лучше изображения и шрифты разместить в отдельных папках
       {
-        // регулярное выражение, которое ищет все файлы с такими расширениями
-        test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
+        test: /\.(png|svg|jpg|jpeg|gif)$/,
         type: "asset/resource",
+        generator: {
+          filename: "images/[name].[hash][ext]",
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name].[hash][ext]",
+        },
       },
     ],
   },
