@@ -14,10 +14,12 @@
       <main class="content">
         <section class="profile">
           <div class="profile__info">
-            <img
-              class="profile__image"
-              src="<%=require('./images/kusto.jpg')%>"
-              alt="Фотография Кусто" />
+            <button class="profile__button-edit-avatar">
+              <img
+                class="profile__image"
+                src="<%=require('./images/kusto.jpg')%>"
+                alt="Фотография Кусто" />
+            </button>
             <div class="profile__title-block">
               <h1 class="profile__title overflow">Жак-Ив Кусто</h1>
               <button class="profile__button-edit" type="button"></button>
@@ -42,7 +44,7 @@
       </main>
 
       <!-- EDIT POPUP -->
-      <div class="popup popup_type_edit">
+      <section class="popup popup_type_edit">
         <div class="popup__container">
           <button class="popup__close" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -73,10 +75,32 @@
             <button class="popup__save" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
+      </section>
+
+      <!-- RENEW AVATAR POPUP -->
+      <section class="popup popup_type_avatar">
+        <div class="popup__container">
+          <button class="popup__close" type="button"></button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form
+            class="popup__form popup__avatar-form"
+            name="avatar-form"
+            novalidate>
+            <input
+              class="popup__input popup__input_type_avatar-link"
+              type="url"
+              name="avatar-link"
+              id="inputAvatarLink"
+              placeholder="Ссылка на картинку"
+              required />
+            <span class="inputAvatarLink-error popup__input-error"></span>
+            <button class="popup__save" type="submit">Сохранить</button>
+          </form>
+        </div>
+      </section>
 
       <!-- ADD POPUP -->
-      <div class="popup popup_type_add">
+      <section class="popup popup_type_add">
         <div class="popup__container">
           <button class="popup__close" type="button"></button>
           <h2 class="popup__title">Новое место</h2>
@@ -102,16 +126,27 @@
             <button class="popup__save" type="submit">Сохранить</button>
           </form>
         </div>
-      </div>
+      </section>
 
       <!-- PREVIEW IMAGE POPUP -->
-      <div class="popup popup_type_preview">
+      <section class="popup popup_type_preview">
         <figure class="popup__preview-container">
           <button class="popup__close" type="button"></button>
           <img class="popup__preview-image" src="#" alt="" />
           <figcaption class="popup__preview-title"></figcaption>
         </figure>
-      </div>
+      </section>
+
+      <!-- DELETE CARD POPUP -->
+      <section class="popup popup_type_delete-card">
+        <div class="popup__container popup__container_type_delete-card">
+          <button class="popup__close" type="button"></button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <form class="__form" name="delete-card" action="">
+            <button class="popup__save" type="button">Да</button>
+          </form>
+        </div>
+      </section>
 
       <!-- TEMPLATE CARD -->
       <template id="card-template">
@@ -120,7 +155,8 @@
           <img class="card__image" src="#" alt="" />
           <div class="card__name">
             <h2 class="card__title overflow"></h2>
-            <button class="card__pic-heart" type="button"></button>
+            <button class="card__like-icon" type="button"></button>
+            <div class="card__like-counter"></div>
           </div>
         </li>
       </template>

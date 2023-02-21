@@ -15,7 +15,7 @@ export default class Card {
     this._title = this._cardElement.querySelector(".card__title");
     this._image = this._cardElement.querySelector(".card__image");
     this._trash = this._cardElement.querySelector(".card__trash");
-    this._like = this._cardElement.querySelector(".card__pic-heart");
+    this._like = this._cardElement.querySelector(".card__like-icon");
 
     this._fillCard();
     this._setEventHandlers();
@@ -27,7 +27,7 @@ export default class Card {
   };
 
   _toggleCardLike = () => {
-    this._like.classList.toggle("card__pic-heart_active");
+    this._like.classList.toggle("card__like-icon_active");
   };
 
   _setEventHandlers = () => {

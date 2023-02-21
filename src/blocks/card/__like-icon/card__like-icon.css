@@ -1,4 +1,4 @@
-.card__pic-heart {
+.card__like-icon {
   padding: 0;
   width: 22px;
   height: 19px;
@@ -12,6 +12,6 @@
   transition: opacity 0.2s linear;
 }
 
-.card__pic-heart:hover {
+.card__like-icon:hover {
   opacity: 0.5;
 }
