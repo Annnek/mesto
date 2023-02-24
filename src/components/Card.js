@@ -24,7 +24,7 @@ export default class Card {
 
   _deleteCard = () => {
     this._cardElement.remove();
-    this._cardElement = null;
+    this._cardElement = null; //Лучше всего при удалении карточки очистить ссылку на DOM-элемент
   };
 
   _toggleCardLike = () => {

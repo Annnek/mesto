@@ -2,6 +2,7 @@
 export const popupEditProfile = ".popup_type_edit";
 export const popupAddCard = ".popup_type_add";
 export const popupBigImage = ".popup_type_preview";
+export const popupEditAvatar = ".popup_type_avatar";
 
 // переменные кнопок открыть-закрыть попап
 export const buttonEditProfile = document.querySelector(
@@ -19,6 +20,12 @@ export const inputJob = document.querySelector(".popup__input_type_job");
 // переменные форм добавления карточки
 export const formAddCard = document.querySelector(".popup__add-form");
 export const cardsContainerSelector = ".card";
+
+// переменные формы редактирования аватара
+export const formEditAvatar = document.querySelector(".popup__avatar-form");
+export const buttonEditAvatar = document.querySelector(
+  ".profile__button-edit-avatar"
+);
 
 // export const cardSetting = {
 //   cardsContainer: ".card",
