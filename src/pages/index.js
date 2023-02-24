@@ -33,7 +33,7 @@ import UserInfo from "../components/UserInfo.js";
 //создание карточки
 function createCard(item) {
   const card = new Card(item, "#card-template", () =>
-    popupOpenImage.open(item)
+    classOpenImage.open(item)
   ).generateCard();
   return card;
 }
@@ -67,7 +67,7 @@ const userInfo = new UserInfo({
 //передача текста на страницу профиля редактирования полей Имя, О себе
 function formValues(value) {
   userInfo.setUserInfo(value.inputName, value.inputJob);
-  popupEdit.close();
+  classEditProfile.close();
 }
 
 //функция открытия попапа редактирования профиля
@@ -76,7 +76,7 @@ function openEditProfile() {
   inputName.value = name;
   inputJob.value = job;
   validatorFormEditProfile.disableSubmitButton();
-  popupEdit.open();
+  classEditProfile.open();
 }
 
 //функция открытия попап редактирования аватара профиля
@@ -89,7 +89,7 @@ function openEditAvatar() {
 //функция открытия попапа для создания новой карточки
 function openAddCard() {
   validatorFormAddPlace.disableSubmitButton();
-  popupAddCard.open();
+  classAddCard.open();
 }
 
 // Для каждой проверяемой формы создайте экземпляр класса FormValidator - валидация формы редактирования.
@@ -111,20 +111,20 @@ const validatorFormAddPlace = new FormValidator(validationConfig, formAddCard);
 validatorFormAddPlace.enableValidation();
 
 //Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
-const popupEdit = new PopupWithForm(popupEditProfile, formValues);
-const popupAddCard = new PopupWithForm(popupAddCard, (item) => {
+const classEditProfile = new PopupWithForm(popupEditProfile, formValues);
+const classAddCard = new PopupWithForm(popupAddCard, (item) => {
   const newCard = createCard(item);
   cardSection.addItem(newCard);
-  popupAddCard.close();
+  classAddCard.close();
 });
-const popupEditAvatar = new PopupWithForm(popupEditAvatar, () => {
+const classEditAvatar = new PopupWithForm(popupEditAvatar, () => {
   const newAvatar = updateUserAvatar(data);
   currentUser.setUserInfo(newAvatar);
-  popupEditAvatar.close();
+  classEditAvatar.close();
 });
 
 //создаем экземпляр формы открытия полной картинки - объект класса PopupWithImage
-const popupOpenImage = new PopupWithImage(popupBigImage);
+const classOpenImage = new PopupWithImage(popupBigImage);
 
 // обработчики
 
@@ -133,7 +133,7 @@ buttonEditProfile.addEventListener("click", () => openEditProfile());
 buttonAddPlace.addEventListener("click", () => openAddCard());
 buttonEditAvatar.addEventListener("click", () => openEditAvatar());
 
-popupEdit.setEventListeners();
-popupAddCard.setEventListeners();
-popupOpenImage.setEventListeners();
-popupEditAvatar.setEventListeners();
+classEditProfile.setEventListeners();
+classAddCard.setEventListeners();
+classOpenImage.setEventListeners();
+classEditAvatar.setEventListeners();
