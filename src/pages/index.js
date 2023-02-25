@@ -1,5 +1,5 @@
 //import constants
-import { initialCards } from "../utils/initialCards.js";
+// import { initialCards } from "../utils/initialCards.js";
 import { validationConfig } from "../utils/validationConfig.js";
 import {
   popupEditProfile,
@@ -17,6 +17,7 @@ import {
   formAddCard,
   formEditAvatar,
   cardsContainerSelector,
+  configApi,
 } from "../utils/constants.js";
 import "./index.css";
 
@@ -27,30 +28,35 @@ import Section from "../components/Section.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../utils/Api.js";
+
+const api = new Api(configApi);
+
+api.getCards().then((initialCards) => {
+  //создание карточки
+  function createCard(item) {
+    const card = new Card(item, "#card-template", () =>
+      classOpenImage.open(item)
+    ).generateCard();
+    return card;
+  }
+
+  //рендеринг карточек на странице из обьекта initialCards
+  const cardSection = new Section(
+    {
+      items: initialCards,
+      renderer: (item) => {
+        const newCard = createCard(item);
+        cardSection.addItem(newCard);
+      },
+    },
+    cardsContainerSelector
+  );
+
+  cardSection.renderItems();
+});
 
 //функции
-
-//создание карточки
-function createCard(item) {
-  const card = new Card(item, "#card-template", () =>
-    classOpenImage.open(item)
-  ).generateCard();
-  return card;
-}
-
-//рендеринг карточек на странице из обьекта initialCards
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      const newCard = createCard(item);
-      cardSection.addItem(newCard);
-    },
-  },
-  cardsContainerSelector
-);
-
-cardSection.renderItems();
 
 //открыть полноразмерную картинку
 // function openFullImage(item) {

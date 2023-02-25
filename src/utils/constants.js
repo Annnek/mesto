@@ -27,8 +27,10 @@ export const buttonEditAvatar = document.querySelector(
   ".profile__button-edit-avatar"
 );
 
-// export const cardSetting = {
-//   cardsContainer: ".card",
-//   cardTemplate: "#card-template",
-//   cardSelector: ".card__item",
-// };
+//config
+export const configApi = {
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
+  headers: {
+    authorization: "332cdff8-dddc-4d5c-ae62-82417a8b0fdc",
+  },
+};
