@@ -4,32 +4,91 @@ export default class Api {
     this._headers = config.headers; //заголовки запроса
   }
 
-  _handleResponse(res) {
+  // Формирую запрос на сервер, если прошел не удачно, возвращаем ошибку!
+  _handleSendingRequest(res) {
     if (res.ok) {
-      return res.json();
+      return Promise.resolve(res.json());
     }
-    return Promise.reject(res.status);
+
+    // Если ошибка пришла, отклоняем промис
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getCards() {
-    return fetch(`${this._baseUrl}/cards`, {
+  // Метод загрузки информации о пользователе с сервера
+  async getUserProfile() {
+    const response = await fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    }).then((res) => this._handleResponse(res));
+    });
+    return this._handleSendingRequest(response);
   }
 
-  createCard(data) {
-    return fetch(`${this._baseUrl}/cards`, {
+  // Метод загрузки карточек с сервера
+  async getInitialCards() {
+    const response = await fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
+    });
+    return this._handleSendingRequest(response);
+  }
+
+  // Метод редактирование профиля
+  async setUserProfile(data) {
+    const response = await fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: data.name,
+        about: data.about,
+      }),
+    });
+    return this._handleSendingRequest(response);
+  }
+
+  // Метод обновления аватара пользователя
+  async updateUserAvatar(data) {
+    const response = await fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.avatar,
+      }),
+    });
+    return this._handleSendingRequest(response);
+  }
+
+  // Метод добавления новой карточки с сервера
+  async addNewCard(data) {
+    const response = await fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(data),
-    }).then((res) => this._handleResponse(res));
+    });
+    return this._handleSendingRequest(response);
   }
 
-  // deleteCard(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/${cardId}`, {
-  //     method: "DELETE",
-  //     headers: this._headers,
-  //     body: JSON.stringify(data),
-  //   }).then((res) => this._handleResponse(res));
-  // }
+  // Метод постановки лайка карточки
+  async setLike(cardId) {
+    const response = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    });
+    return this._handleSendingRequest(response);
+  }
+
+  // Метод постановки и снятия лайка с карточки
+  async removeLike(cardId) {
+    const response = await fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+    return this._handleSendingRequest(response);
+  }
+
+  // Метод удаления карточки
+  async deleteCard(cardId) {
+    const response = await fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    });
+    return this._handleSendingRequest(response);
+  }
 }

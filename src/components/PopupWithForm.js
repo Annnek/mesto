@@ -1,40 +1,38 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor(popupSelector, handleSubmitForm) {
-    super(popupSelector);
+  constructor(selector, handleSubmitForm) {
+    super(selector);
     this._handleSubmitForm = handleSubmitForm;
     this._form = this._popup.querySelector(".popup__form");
-    this._inputList = this._form.querySelectorAll(".popup__input");
+    this._inputs = [...this._form.querySelectorAll(".popup__input")];
+    this._form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const replacementText = event.submitter.textContent;
+      // Смена текста кнопки при сохранение данных
+      event.submitter.textContent = "Сохранение...";
+      this._handleSubmitForm(this._getInputValues())
+        .then(() => this.close())
+        .finally(() => {
+          event.submitter.textContent = replacementText;
+        });
+    });
   }
 
-  // собирает данные всех полей формы.
   _getInputValues() {
     const values = {};
-    this._inputList.forEach((input) => {
+    this._inputs.forEach((input) => {
       values[input.name] = input.value;
     });
     return values;
   }
 
-  // Возвращение input
-  setInputsValues(data) {
-    this._inputList.forEach((input) => {
+  setInputValue(data) {
+    this._inputs.forEach((input) => {
       input.value = data[input.name];
     });
   }
 
-  //Перезаписывает родительский метод, добавляет обработчик клика иконке закрытия, добавляет обработчик сабмита формы.
-  setEventListeners = () => {
-    super.setEventListeners();
-    this._form.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this._handleSubmitForm(this._getInputValues());
-      this.close();
-    });
-  };
-
-  //Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
   close() {
     super.close();
     this._form.reset();
